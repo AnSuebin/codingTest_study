@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // ** 값을 표현할 때 닶이 string인 경우 실수 하는 경우가 많음 예)"NO"를 "No"로
+      // ** 따라서 string인 경우 복붙으로 하는 것 추천
+      // 1. 나의 문제 풀이. sum을 설정해줘서 max를 뺀 값과 max 비교
+      function solution1(a, b, c) {
+        let max;
+        let sum = a + b + c;
+        let answer;
+        if (a > b) {
+          max = a;
+        } else {
+          max = b;
+        }
+        if (c > max) {
+          max = c;
+        }
+
+        if (sum - max > max) {
+          answer = 'YES';
+        } else {
+          answer = 'NO';
+        }
+        return answer;
+      }
+      // 2. 선생님의 문제 풀이.
+      function solution2(a, b, c) {
+        let max;
+        let sum = a + b + c;
+        // 처음부터 YES로 설정하고 아닐 때만 변경
+        let answer = 'YES';
+
+        if (a > b) {
+          max = a;
+        } else {
+          max = b;
+        }
+        if (c > max) {
+          max = c;
+        }
+
+        if (sum - max <= max) {
+          answer = 'NO';
+        }
+        return answer;
+      }
+
+      console.log(solution1(6, 7, 11));
+    </script>
+  </body>
+</html>

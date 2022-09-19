@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이. 넘버 리스트를 만들어 for 구문 돌리기
+      function solution1(a, b, c) {
+        let numberList = [a, b, c];
+        let answer = numberList[0];
+        for (let i = 0; i < numberList.length; i++) {
+          if (numberList[0] > numberList[i]) {
+            answer = numberList[i];
+          }
+        }
+        return answer;
+      }
+
+      // 2. 선생님의 문제 풀이. 3개이기 때문에 3개에 맞춤 if 사용
+      // 순서대로 내려가는 if 구문. 굳이 if를 그 안에서 엮어 사용할 필요 없음.
+      // a와 b 비교 후, c가 그 둘보다 작은지만 판단
+      function solution2(a, b, c) {
+        let answer;
+        if (a < b) {
+          answer = a;
+        } else {
+          answer = b;
+        }
+        if (c < answer) {
+          answer = c;
+        }
+
+        return answer;
+      }
+
+      console.log(solution2(1, 5, 2));
+    </script>
+  </body>
+</html>
