@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      function solution(arr) {
+        let oddList = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 1) {
+            oddList.push(arr[i]);
+          }
+        }
+        let sum = 0;
+        for (let j = 0; j < oddList.length; j++) {
+          sum += oddList[j];
+        }
+
+        let oddMin = oddList[0];
+        for (let k = 0; k < oddList.length; k++) {
+          if (oddMin > oddList[k]) {
+            oddMin = oddList[k];
+          }
+        }
+        return `${sum}\n${oddMin}`;
+      }
+
+      // 2. 선생님의 문제 풀이. for of 구문을 통해서 답을 바로 구함
+      function solution(arr) {
+        // 홀수면 바로 sum에 합하기
+        // if 안에 if
+        // 그리고 그 안에서 min값과 비교하기
+        let answer = [];
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+        for (const x of arr) {
+          if (x % 2 === 1) {
+            sum += x;
+            if (x < min) {
+              min = x;
+            }
+          }
+        }
+        answer.push(sum);
+        answer.push(min);
+      }
+
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
