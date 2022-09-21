@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 합을 구한 후 for로 두명을 빼줬을 때 100이면 filter로 그 둘을 걸러서 array 반환
+      function solution(arr) {
+        let sum = +arr.reduce((a, b) => a + b, 0);
+        let exclude2;
+        let answerArray = [];
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            if (i !== j) {
+              exclude2 = sum - arr[i] - arr[j];
+              if (exclude2 === 100) {
+                answerArray = arr.filter(
+                  (num) => num !== arr[i] && num !== arr[j]
+                );
+              }
+            }
+          }
+        }
+        return answerArray;
+      }
+      // 2. 선생님의 문제 풀이.
+      function solution2(arr) {
+        let answer = arr;
+        let sum = arr.reduce((a, b) => a + b, 0);
+        for (let i = 0; i < 8; i++) {
+          for (let j = 0; j < 9; j++) {
+            if (sum - arr[i] - arr[j] === 100) {
+              // 뒤에껄 먼저 지우기//
+              arr.splice(j, 1);
+              arr.splice(i, 1);
+            }
+          }
+          return answer;
+        }
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution1(arr));
+    </script>
+  </body>
+</html>

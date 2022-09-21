@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 마지막 수를 뽑을 때, string으로 바꿔서 substr로 빼오도록 활용
+      function solution1(day, arr) {
+        let lastNumberArray = arr.map((num) => +String(num).substr(1, 2));
+        let count = 0;
+        for (let i = 0; i < lastNumberArray.length; i++) {
+          if (lastNumberArray[i] === day) {
+            count++;
+          }
+        }
+        return count;
+      }
+      // 2. 선생님의 문제 풀이.
+      // 마지막 수를 뽑을 때, 10으로 나눠 나머지를 사용
+      // 항상 바로 비교할 수 있도록 사용
+      function solution2(day, arr) {
+        let answer = 0;
+        for (const x of arr) {
+          if (x % 10 === day) {
+            answer++;
+          }
+        }
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution1(3, arr));
+    </script>
+  </body>
+</html>
