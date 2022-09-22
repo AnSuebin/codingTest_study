@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 1) string을 array로 변환
+      // 2) 뒤부터 0까지 for구문 돌려 A를 splice 메소드를 활용하여 #으로 변경
+      // 3) join으로 Array를 string으로 변환
+      function solution1(string) {
+        let answer;
+        // 1)
+        let changeArray = [...string];
+        // 2)
+        for (let i = changeArray.length - 1; i >= 0; i--) {
+          if (changeArray[i] === 'A') {
+            changeArray.splice(i, 1, '#');
+          }
+        }
+        // 3) 조인으로 Array 합치기
+        answer = changeArray.join('');
+        return answer;
+      }
+
+      // 2. 선생님의 문제 풀이.
+      // 1) answer를 ''
+      // 2) 요소 중 A가 있다면 #을 answer에 추가
+      // 3) 요소 중 그 외라면 그 요소 answer에 추가
+      function solution2(string) {
+        let answer = '';
+        for (const x of string) {
+          if (x === 'A') {
+            answer += '#';
+          } else {
+            answer += 'x';
+          }
+        }
+        return answer;
+      }
+
+      // 3. 선생님의 문제 풀이.
+      // 1) replace 사용하기
+      // 2) string은 주소 참조가 되는 것이 아닌 값이 복사
+      // 따라서 string = string.replace() 불가
+      // 3) string.replace(/A/,'#') => 첫 A값을 #으로 변경
+      // 4) 모두 하려면 string.replave(/A/g,'#')
+      function solution3(string) {
+        let answer = string;
+        answer = answer.replace(/A/g, '#');
+        return answer;
+      }
+      let str = 'BANANA';
+      console.log(solution1(str));
+    </script>
+  </body>
+</html>

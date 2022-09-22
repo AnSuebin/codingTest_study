@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // for 구문
+      function solution1(str, t) {
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === t) {
+            count++;
+          }
+        }
+        return count;
+      }
+
+      // 2. 선생님의 문제 풀이.
+      // for of 구문
+      function solution1(str, t) {
+        let answer = 0;
+        for (const x of str) {
+          if (str === t) {
+            answer++;
+          }
+        }
+        return answer;
+      }
+
+      // 3. 선생님의 문제 풀이.
+      // split로 t를 나눠준 뒤 length로 구분
+      function solution1(str, t) {
+        let answer = str.split(t).length;
+        return answer - 1;
+      }
+
+      let str = 'COMPUTERPROGRAMMING';
+      console.log(solution1(str, 'R'));
+    </script>
+  </body>
+</html>
