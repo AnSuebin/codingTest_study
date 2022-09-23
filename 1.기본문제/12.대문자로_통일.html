@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이. toUpperCase() 전체 사용
+      function solution1(str) {
+        let answer;
+        answer = str.toUpperCase();
+        return answer;
+      }
+
+      // 2. 선생님의 문제 풀이. 하나하나 보면서 소문자면, x.toUpperCase()로 변경
+      function solution2(str) {
+        let answer = '';
+        for (const x of str) {
+          if (x !== x.toUpperCase()) {
+            answer += x.toUpperCase();
+          } else {
+            answer += x;
+          }
+        }
+        return answer;
+      }
+
+      // 3. 선생님의 문제 풀이. 아스킷 코드
+      // x.charChodeAt() : string을 아스킷 코드로 전환
+      // String.fromCharCode(x): 아스킷 코드를 string으로 전환
+      // s를 아스킷 코드로 바군 후, 소문자면 대문자로 변경
+      // 대 => 소 : + 32
+      // 소 => 대 : - 32
+      function solution3(str) {
+        let answer = '';
+        for (const x of str) {
+          let num = x.charCodeAt();
+          // 대문자라면 : 97 ~ 122
+          if (num >= 97 && num <= 122) {
+            answer += String.fromCharCode(num - 32);
+          } else {
+            answer += x;
+          }
+        }
+        return answer;
+      }
+      let str = 'ItisTimeToStudy';
+      console.log(solution3(str));
+    </script>
+  </body>
+</html>
