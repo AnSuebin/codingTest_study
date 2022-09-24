@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이. toUpperCase() 전체 사용
+      function solution1(str) {
+        let answer = '';
+        for (const x of str) {
+          if (x === x.toUpperCase()) {
+            answer += x.toLowerCase();
+          } else {
+            answer += x.toUpperCase();
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님의 문제 풀이.
+      function solution2(str) {
+        let answer = '';
+        for (const x of str) {
+          if (x === x.toUpperCase()) {
+            answer += x.toLowerCase();
+          } else {
+            answer += x.toUpperCase();
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution1('StuDY'));
+    </script>
+  </body>
+</html>
