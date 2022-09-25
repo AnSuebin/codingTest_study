@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      function solution(str) {
+        let answer = '';
+        if (str.length % 2 === 1) {
+          answer += str[(str.length - 1) / 2];
+        } else {
+          answer += str[str.length / 2 - 1];
+          answer += str[str.length / 2];
+        }
+        return answer;
+      }
+
+      // 2. 선생님의 문제 풀이.
+      // str.substring(시작 인덱스, 끝 인덱스 +1)
+      // str.substr(시작 인덱스, 뽑아낼 갯수)
+      function solution2(str) {
+        let answer;
+        let mid = Math.floor(str.length / 2);
+        if (str.length % 2 === 1) {
+          // answer = str.substring(mid, mid + 1);
+          answer = str.substr(mid, 1);
+        } else {
+          // answer = str.substring(mid - 1, mid + 1);
+          answer = str.substr(mid - 1, 2);
+        }
+        return answer;
+      }
+      console.log(solution2('find'));
+    </script>
+  </body>
+</html>

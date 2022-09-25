@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이. 뭔가 단단히 꼬인 나의 문제 풀이ㅜㅠ
+      function solution1(str) {
+        let answer = str;
+        for (let i = str.length; i >= 0; i--) {
+          for (let j = str.length; j >= 0; j--) {
+            if (i === j) {
+              answer.splice(i, 1);
+            }
+          }
+        }
+        return answer;
+      }
+
+      // 2. 선생님의 문제 풀이.
+      // 배열 혹은 string.indexOf(찾는 것) : 가장 처음 인덱스 출력
+      // str.indexOf(찾는 것, 숫자) : 숫자 이후 처음으로 오는 인덱스 출력
+      //** 만약 그 수가 자신의 인덱스를 가진다면 넣어주기 **//
+      function solution2(str) {
+        let answer = '';
+        // console.log(str.indexOf('k'));
+        for (let i = 0; i < str.length; i++) {
+          // console.log(s[i] , i , s.indexOf(s[i]))
+          // 마지막 수가 같다면 처음 인덱스가 나온다.
+          if (str.indexOf(str[i]) === i) answer += str[i];
+        }
+        return answer;
+      }
+
+      // 3. 선생님의 문제 풀이. 어떠한 값이 몇개 있는지 찾기
+      function solution3(str) {
+        let answer = 0;
+        let pos = str.indexOf('k');
+        while (pos !== -1) {
+          ++answer;
+          pos = str.indexOf('k', pos + 1);
+        }
+        return answer;
+      }
+
+      // 4. 다른 학생의 문제풀이. incluedes 사용
+      //
+
+      function solution4(str) {
+        let answer = '';
+        for (const x of str) {
+          if (!answer.includes(x)) {
+            answer += x;
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution4('ksekkset'));
+    </script>
+  </body>
+</html>
