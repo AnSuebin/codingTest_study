@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // score라는 값을 통해, 내가 1일 때 score에 1을 더해주는 값을 지정해준다.
+      // 그리고 뒤가 0이면 score값을 0으로 리셋해주는 것으로 값을 지정해준다.
+      function solution1(arr) {
+        let answer = 0;
+        let score = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === 1) {
+            score++;
+            answer += score;
+            if (arr[i + 1] === 0) {
+              score = 0;
+            }
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이.
+      // 유사하긴 하지만, 좀 더 깔끔
+      // 만약 내가 1이면 점수에 1 더하고 그리고 answer에 더한다.
+      // 만약 내가 0이면 점수 0으로 리셋
+      function solution2(arr) {
+        let answer = 0,
+          cnt = 0;
+        for (const x of arr) {
+          if (x === 1) {
+            cnt++;
+            answer += cnt;
+          } else {
+            cnt = 0;
+          }
+        }
+        return answer;
+      }
+      let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(solution2(arr));
+    </script>
+  </body>
+</html>
