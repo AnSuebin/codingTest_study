@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // string의 길이 구하기
+      // string의 길이 몫 구하기 (정수로 변경)
+      // 회문 관련 변수 "YES"로 선언
+      // for문 돌려서, 다른게 있다면  "NO"로 변경
+      // toUpperCase() 뒤에 () 놓쳐서 한시간 고민!
+      function solution1(s) {
+        let n = s.length;
+        let n2 = parseInt(s.length / 2);
+        let isPalindrome = 'YES';
+        let string = s.toUpperCase();
+        for (let i = 0; i < n2; i++) {
+          if (string[i] !== string[n - i - 1]) {
+            isPalindrome = 'NO';
+          }
+        }
+        return isPalindrome;
+      }
+      // 2. 선생님 문제 풀이.
+      // 꽤나 유사한 풀이:)
+      function solution2(s) {
+        let answer = 'YES';
+        s = s.toLowerCase();
+        let len = s.length;
+        for (let i = 0; i < Math.floor(s.length / 2); i++) {
+          if (s[i] !== s[n - i - 1]) {
+            answer = 'NO';
+          }
+        }
+        return answer;
+      }
+      // 3. 선생님 문제풀이 2
+      //
+      function solution3(s) {
+        let answer = 'YES';
+        s = s.toLowerCase();
+        // 배열화 시키기 => s.split('') : 그래야 reverse 가능
+        // 뒤집고, string으로 만들기
+        let reverseStr = s.split('').reverse().join('');
+        if (s !== reverseStr) {
+          answer = 'NO';
+        }
+        return answer;
+      }
+
+      let str = 'goog';
+      //   solution1(str);
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>

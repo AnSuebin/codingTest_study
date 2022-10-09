@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 제거 하는 것들을 replace를 통해 없애준다.
+      // replace 구문 기억하기!
+      function solution1(s) {
+        let regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+        let blank = / /g;
+        let number = /[1-9]/g;
+        let string = s
+          .replace(regExp, '')
+          .replace(blank, '')
+          .replace(number, '')
+          .toUpperCase();
+        let n = string.length;
+        let n2 = parseInt(string.length / 2);
+        let isPalindrome = 'YES';
+
+        for (let i = 0; i < n2; i++) {
+          if (string[i] !== string[n - 1 - i]) {
+            isPalindrome = 'No';
+          }
+        }
+        return isPalindrome;
+      }
+      // 2. 선생님 문제 풀이.
+      // 아닌 것들 찾을 때는 ^  => replace로 아닌것들을 찾아서 빈문자열 만들어주기
+      function solution2(s) {
+        let answer = 'YES';
+        s = s.toLowerCase().replace(/[^a-z]/g, '');
+        let reverseStr = s.split('').reverse().join('');
+        if (s !== reverseStr) {
+          answer = 'NO';
+        }
+        return answer;
+      }
+      function solution3(s) {}
+
+      let str = 'found7, time: study; Yduts; emit, 7Dnuof';
+      console.log(solution1(str));
+    </script>
+  </body>
+</html>
