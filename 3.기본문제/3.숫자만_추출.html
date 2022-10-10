@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // substr(indexStart, length) => 특정 위치에서 시작하여, 길이만큼 문자열 반환
+      //                       => length 생략 가능, 마지막 위치까지 추출
+      // slice(indexStart, idexEnd) => 인덱스 시작에서, 끝 인덱스 전까지 반환
+      // replace('A','') => 특정 문자열이 존재할 경우, 원하는 문자열로 대체
+      // if를 각각 해줘야하는데 그걸 잘못해줌!
+      function solution1(s) {
+        let answer = '';
+        s = s.replace(/[^0-9]/g, '');
+        console.log(s);
+        while (s[s.length - 1] === '0') {
+          console.log(s);
+        }
+        while (s[0] === '0') {
+          console.log(s);
+        }
+        return s;
+      }
+      // 2. 선생님 문제 풀이.
+      // isNaN()으로 숫자가 아닌 것들 걸러내기
+      // 정수만 거르는 parseInt로 앞의 0 걸러내기
+      function solution2(str) {
+        let answer = '';
+        for (let x of str) {
+          if (!isNaN(x)) {
+            answer += x;
+          }
+        }
+        return parseInt(answer);
+      }
+
+      // 3. 선생님 문제 풀이.
+      function solution3(str) {
+        let answer = '';
+        for (let x of str) {
+          if (!isNaN(x)) {
+            answer += answer * 10 + Number(x);
+          }
+        }
+        return answer;
+      }
+      let str = '0g0en2T0s8eSoft00';
+      console.log(solution3(str));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 초기값을 잘못썼다가 1시간 날렸당~
+      // 찾는 값의 인덱스를 뽑아 리스트를 만들고
+      // 이중 for문 돌려 가장 작은 값 뽑아 answer에 넣기
+      function solution1(s, t) {
+        let search = t;
+        let tIndex = [];
+        let answer = '';
+        let distance = 0;
+        let index = s.indexOf(search);
+        while (index != -1) {
+          tIndex.push(index);
+          index = s.indexOf(search, index + 1);
+        }
+        for (let i = 0; i < s.length; i++) {
+          distance = Math.abs(i - tIndex[0]);
+          for (let j = 1; j < tIndex.length; j++) {
+            if (distance > Math.abs(i - tIndex[j])) {
+              distance = Math.abs(i - tIndex[j]);
+            }
+          }
+          answer += distance + ' ';
+        }
+        console.log(tIndex);
+        return answer;
+      }
+      // 2. 선생님 문제 풀이.
+      // p라는 값을 1000이라고 큰 값을 지정
+      // e를 만나면 0이 되고, 아니면 p를 계속 1 더해줌
+      // 항상 p를 answer에 push 해주기
+      // 반대 방향으로하면서 기존보다 작으면 그 값으로 변경
+      function solution2(s, t) {
+        let answer = [];
+        let p = 1000;
+        for (const x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+        p = 1000;
+        for (let i = s.length - 1; i >= 0; i++) {
+          if (s[i] === t) {
+            p = 0;
+            answer[i] = p;
+          } else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+        return answer;
+      }
+
+      let str = 'teachermode';
+      console.log(solution2(str, 'e'));
+    </script>
+  </body>
+</html>
