@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      // 왜 안되지...
+      // 둘이 같을때 너무 복잡하게 넣어줌
+      function solution1(s) {
+        let answer = s[0];
+        let number = 1;
+        for (let i = 1; i < s.length; i++) {
+          if (s[i - 1] === s[i]) {
+            number++;
+          } else {
+            answer += s[i];
+            if (number > 1) {
+              answer += number;
+              number = 1;
+            }
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이.
+      // 이후과 같으면 cnt++
+      // 다르면 s[i] cnt++ 넣어주기 (cnt >1) 떄
+      function solution2(s) {
+        let answer = '';
+        let cnt = 1;
+        s = s + ' ';
+        for (let i = 0; i < s.length - 1; i++) {
+          if (s[i] === s[i + 1]) {
+            cnt++;
+          } else {
+            answer += s[i];
+            if (cnt > 1) {
+              answer += cnt;
+              cnt = 1;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let str = 'KKHSSSSSSSE';
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>
