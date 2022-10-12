@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이.
+      function solution1(arr) {
+        let sumArr = [];
+        let s = '';
+        // 각요소 합의 리스트 만들기
+        for (let i = 0; i < arr.length; i++) {
+          s = arr[i]
+            .toString()
+            .split('')
+            .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+          sumArr.push(s);
+        }
+        // 리스트 중 제일 큰 수 구하기 : large
+        let large = sumArr[0];
+        for (let j = 1; j < sumArr.length; j++) {
+          if (large < sumArr[j]) {
+            large = sumArr[j];
+          }
+        }
+        // 제일 큰수의 인덱스들 리스트 뽑기 : largeIndex
+        let largeIndex = [];
+        for (let k = 0; k < sumArr.length; k++) {
+          if (sumArr[k] === large) {
+            largeIndex.push(k);
+          }
+        }
+        // largeIndex를 사용하여 arr에서 합이 가장 큰 수 중 큰 수 구하기
+        let answer = arr[largeIndex[0]];
+        if (largeIndex.length > 1) {
+          for (let x = 1; x < largeIndex.length; x++) {
+            if (answer < arr[largeIndex[x]]) {
+              answer = arr[largeIndex[x]];
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      // 2. 선생님 문제 풀이.
+      // 한방에 비교하기
+      // 자리수 합을 하나만 변수로 만들어서 돌려가면서 max 값과 비교하고 비교해서 참이면 x값을 answer에 넣는 구조
+      function solution2(arr) {
+        let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+        for (const x of arr) {
+          // 자리수 합
+          let sum = 0;
+          // 임시 변수
+          let tmp = x;
+          // 자릿수들의 합
+          while (tmp === 0) {
+            sum += tmp % 10;
+            tmp = Math.floor(tmp / 10);
+          }
+          // 이후 sum으로 max값과 비교
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) {
+              answer = x;
+            }
+          }
+        }
+        return answer;
+      }
+
+      // 3. 선생님 문제 풀이.
+      // 메소드 사용한 자리수 합
+      function solution3(arr) {
+        let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+        for (const x of arr) {
+          let sum = x
+            .toString()
+            .split('')
+            .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) {
+              answer = x;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution3(arr));
+    </script>
+  </body>
+</html>
