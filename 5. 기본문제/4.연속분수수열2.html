@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 내 문제 풀이
+      function solution1(m, arr) {
+        let sum;
+        let answer = 0;
+        let j;
+
+        for (let i = 0; i < arr.length; i++) {
+          sum = 0;
+          j = i;
+          while (sum <= m) {
+            sum += arr[j];
+            answer++;
+            j++;
+            console.log(arr[i], arr[j], sum, answer);
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이
+      // 너무 어려웠음
+      function solution(m, arr) {
+        let answer = 0;
+        let sum = 0;
+        let lt = 0; // 앞의 인덱스
+        // 뒤의 인덱스
+        for (let rt = 0; rt < arr.length; rt++) {
+          // sum에 for문 돌린 뒤를 더해준다
+          sum += arr[rt];
+          //
+          while (sum > m) {
+            sum - arr[lt++];
+          }
+          answer += rt - lt + 1;
+        }
+        return answer;
+      }
+      let a = [1, 3, 1, 2, 3];
+      console.log(solution1(5, a));
+    </script>
+  </body>
+</html>
