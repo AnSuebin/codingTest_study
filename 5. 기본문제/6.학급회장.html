@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이
+      // 그냥 풀어버린 이중 포문...
+      function solution(str) {
+        let captain = ['A', 'B', 'C', 'D', 'E'];
+        let captainCounter = [0, 0, 0, 0, 0];
+        let answer;
+        for (let i = 0; i < str.length; i++) {
+          for (let k = 0; k < captain.length; k++) {
+            if (str[i] === captain[k]) {
+              captainCounter[k]++;
+            }
+          }
+        }
+        answer = captain[captainCounter.indexOf(Math.max(...captainCounter))];
+        return answer;
+      }
+
+      // 2. 선생님 문제 풀이
+      // 해시배열 만들어 찾기
+      function solution2(str) {
+        let answer;
+        // Map()은 자바스크립트의 key-value 페어로 이루어진 컬렉션
+        // key를 사용하여 value를 get,set할 수 있음
+        // key들은 중복될 수 없음, 하나의 key, 하나의 value
+        // key로 사용할 수 있는 데이터 형: string, symbole, object, function
+        // number 사용 불가
+        // .set 으로 체우고, .has('누구')가 있는 지 확인, .size() 엔트리 갯수 확인, .delete('누구') 삭제, .clear()싹다 삭제
+        let sH = new Map();
+        for (const x of object) {
+          if (sH.has(x)) {
+            sH.set(x, sH.get(x) + 1);
+          } else {
+            sH.set(x, 1);
+          }
+        }
+        let max = Number.MIN_SAFE_INTEGER;
+        // key와 value값을 가져옴
+        for (let [key, val] of sH) {
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
+        return answer;
+      }
+
+      let str = 'BACBACCACCBDEDE';
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>
