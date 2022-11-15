@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제풀이
+      function solution(str1, str2) {
+        let str1answer = [...str1].sort();
+        let str2answer = [...str2].sort();
+        let answer = 'YES';
+        console.log(str1answer, str2answer);
+        for (let i = 0; i < str1answer.length; i++) {
+          if (str1answer[i] !== str2answer[i]) {
+            answer = 'NO';
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이
+      // Map()으로 key 값과 value값으로 첫 배열을 만들어 준 후,
+      // 다른 배열을 돌라며, 키의 값이 있는지 숫자를 상쇄시켜가며 확인
+      function solution2(str1, str2) {
+        let answer = 'YES';
+        let sH = new Map();
+        for (const x of str1) {
+          if (sH.has(x)) {
+            sH.set(x, sH.get(x) + 1);
+          } else {
+            sH.set(x, 1);
+          }
+        }
+        for (const x of str2) {
+          if (!sH.has(x) || sH.get(x) === 0) {
+            return 'NO';
+          }
+          sH.set(x, sH.get(x) - 1);
+        }
+        return answer;
+      }
+
+      let a = 'AbaAeCe';
+      let b = 'baeeACA';
+      console.log(solution2(a, b));
+    </script>
+  </body>
+</html>
