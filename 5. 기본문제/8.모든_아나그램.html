@@ -6,20 +6,93 @@
   <body>
     <script>
       // 1. 나의 문제풀이
-      function compareMaps2(map1, map2) {}
       function solution1(s, t) {
-        let answer = 0;
+        let p1 = 0;
+        let p2 = t.length;
         let mapping1 = new Map();
-        for (let i = 0; i < s.length; i++) {
-          if (mappin1.has(s[i])) {
-            mapping2.get();
+        let mapping2 = new Map();
+        for (let i = 0; i < t.length; i++) {
+          if (mapping1.has(s[i])) {
+            mapping1.set(s[i], mapping1.get(s[i]) + 1);
           } else {
+            mapping1.set(s[i], 1);
           }
+        }
+
+        for (let j = 0; j < t.length; j++) {
+          if (mapping2.has(t[j])) {
+            mapping2.set(t[j], mapping2.get(t[j]) + 1);
+          } else {
+            mapping2.set(t[j], 1);
+          }
+        }
+        console.log(mapping1);
+        console.log(mapping2);
+        mapping2;
+
+        while (p2 < s.length) {
+          // 둘이 길이 맞는지 확인
+          if (mapping1.size !== mapping2.size) {
+            return false;
+          }
+          for (let [key, val] of mapping1) {
+            if (!mapping2.has(key) || mapping2.get(key) !== val) {
+              return false;
+            }
+          }
+          return true;
         }
       }
       // 2. 선생님 문제 풀이
-      function compareMaps2(map1, map2) {}
-      function solution2(s, t) {}
+      function compareMaps2(map1, map2) {
+        if (map1.size !== map2.size) {
+          return false;
+        }
+        for (let [key, val] of map1) {
+          if (!map2.has(key) || map2.get(key) !== val) {
+            return false;
+          }
+        }
+        return true;
+      }
+      function solution2(s, t) {
+        let answer = 0;
+        let tH = new Map();
+        let sH = new Map();
+        for (let x of t) {
+          if (tH.has(x)) {
+            tH.set(x, tH.get(x) + 1);
+          } else {
+            tH.set(x, 1);
+          }
+        }
+        // 길이보다 하나 작게가 포인트
+        let len = t.length - 1;
+        for (let i = 0; i < len; i++) {
+          if (sH.has(s[i])) {
+            sH.set(s[i], tH.get(s[i]) + 1);
+          } else {
+            sH.set(s[i], 1);
+          }
+        }
+        // 뒤로 for문 돌기
+        for (let rt = len; rt < s.length; rt++) {
+          if (sH.has(s[rt])) {
+            sH.set(s[rt], tH.get(s[rt]) + 1);
+          } else {
+            sH.set(s[rt], 1);
+          }
+          if (compareMaps2(sH, tH)) {
+            answer++;
+          }
+          // 뺐을 때 추가된 0값 삭제
+          sH.set(s[lt], sH.get(s[lt]) - 1);
+          if (sH.get(s[lt]) === 0) {
+            sH.delete(s[lt]);
+          }
+          lt++;
+        }
+      }
       let a = "bacaAacba";
       let b = "abc";
       console.log(solution1(a, b));
