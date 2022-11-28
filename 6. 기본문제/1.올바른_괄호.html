@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이
+      // 잘못된 문제풀이 (()(()))() 이럴 경우 false로 처리 될 수 밖에 없다
+      function solution1(s) {
+        let openCount = 0;
+        let closeCount = 0;
+        let answer = true;
+
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "(") {
+            openCount++;
+          } else {
+            closeCount++;
+            // 닫는 부호에서 다음이 여는 부호라면, 비교
+            if (s[i + 1] === "(") {
+              // 갯수가 서로 다르면 false, 및 break
+              if (openCount !== closeCount) {
+                answer = false;
+                break;
+                // 둘이 같으면 뒤를 위해 리셋
+              } else {
+                openCount = 0;
+                closeCount = 0;
+              }
+            }
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이
+      // 스택이라는 자료구조로 풀어야하는 문제
+      // 선입후출
+      // 배열에 들어가고, 푸쉬와 팝 이용
+
+      function solution(s) {
+        let answer = "YES";
+        let stack = [];
+        for (const x of s) {
+          if (x === "(") {
+            stack.push(x);
+          } else {
+            if (stack.length === 0) {
+              return "NO";
+            }
+            stack.pop();
+          }
+        }
+        if (stack.length > 0) {
+          return "NO";
+        }
+        return answer;
+      }
+
+      let a = "(()()))";
+      console.log(solution1(a));
+    </script>
+  </body>
+</html>
