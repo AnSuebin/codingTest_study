@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이
+      // 무한 루프에서 안나옴 ㅜㅠ
+
+      function solution1(s) {
+        let answer;
+        let stack = [];
+        for (const x of s) {
+          if (x === "(" || x === /[A-Z]/) {
+            stack.push(x);
+          } else {
+            while (s[s.length - 1] !== "(") {
+              stack.pop(s[s.length - 1]);
+            }
+            stack.pop(s[s.length - 1]);
+          }
+        }
+        console.log(stack);
+        answer = stack.join("");
+        return answer;
+      }
+
+      // 2. 선생님 문제 풀이
+      function solution(s) {
+        let answer;
+      }
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(solution1(str));
+    </script>
+  </body>
+</html>
