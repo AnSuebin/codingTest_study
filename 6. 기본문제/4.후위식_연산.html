@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제풀이
+      function solution1(s) {
+        let stack = [];
+        let answer = "";
+        for (let i = 0; i < s.length; i++) {
+          if (/[1-9]/g.test(+s[i])) {
+            stack.push(+s[i]);
+          }
+        }
+        console.log(stack);
+      }
+      // 2. 선생님의 문제풀이
+      function solution(s) {}
+      let str = "352+*9-";
+      console.log(solution1(str));
+    </script>
+  </body>
+</html>
