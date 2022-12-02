@@ -6,20 +6,54 @@
   <body>
     <script>
       // 1. 나의 문제풀이
+      // 이건 문제조차 이해하지 못함 ㅜㅠ
+      // 어떻게 해야할지 감도 못잡음 ㅜㅠ
       function solution1(s) {
         let stack = [];
-        let answer = "";
+        let answer = 0;
+        let rt, rl;
         for (let i = 0; i < s.length; i++) {
           if (/[1-9]/g.test(+s[i])) {
             stack.push(+s[i]);
+          } else {
+            // 부호를 어떻게 숫자로 넣어줘야할까?
+            rt = stack[stack.length - 1];
+            lt = stack[stack.length - 2];
+
+            answer += lt + s[i] + rt;
           }
         }
         console.log(stack);
+        console.log(answer);
       }
       // 2. 선생님의 문제풀이
-      function solution(s) {}
+      function solution2(s) {
+        let answer;
+        let stack = [];
+        for (const x of s) {
+          if (!isNaN(x)) {
+            stack.push(+s[i]);
+          } else {
+            // 빠져나오는 수를 pop을 통해 가져올 수 있음
+            let rt = stack.pop();
+            let lt = stack.pop();
+            // 연산자 별로 조건을 달아서 모두 해줘야함.
+            if (x === "+") {
+              stack.push(It + rt);
+            } else if (x === "-") {
+              stack.push(It - rt);
+            } else if (x === "/") {
+              stack.push(It / rt);
+            } else {
+              stack.push(It * rt);
+            }
+          }
+        }
+        answer = stack[0];
+        return answer;
+      }
       let str = "352+*9-";
-      console.log(solution1(str));
+      console.log(solution2(str));
     </script>
   </body>
 </html>
