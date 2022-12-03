@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제풀이
+      function solution1(s) {
+        let stack = [];
+        let answer = 0;
+        for (const x of s) {
+          if (x === "(") {
+            stack.push("(");
+          } else {
+            // 레이저만 생각함
+            stack.pop(stack[stack.length - 1]);
+            answer += stack.length;
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제풀이
+      // 마지막인지, 레이저인지 이전 괄호를 통해 확인
+      // 레이저라면 size 더해주기, 끝에꺼 팝
+      // 마지막이라면 1개 더해주고, 끝에꺼 팝
+      function solution2(s) {
+        let answer = 0;
+        let stack = [];
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "(") {
+            stack.push(s[i]);
+          } else {
+            if (s[i - 1] === "(") {
+              stack.pop(stack[stack.length - 1]);
+              answer += stack.length;
+            } else {
+              stack.pop(stack[stack.length - 1]);
+              answer++;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let a = "(((()(()()))(())()))(()())";
+      console.log(solution2(a));
+    </script>
+  </body>
+</html>
