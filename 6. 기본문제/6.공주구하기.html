@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제 풀이
+      // 오늘두 잘 모르겠다.... while 왜 안되지...?
+      function solution1(n, k) {
+        let stack = [];
+        let index = 0;
+        let array = [];
+        for (let i = 1; i <= n; i++) {
+          array.push(i);
+        }
+        console.log(array);
+
+        while (array.length) {
+          if (index < k - 1) {
+            stack.push(array[index++]);
+            console.log(stack);
+          } else if (index === k - 1) {
+            array = array.slice(k);
+            array.push(...stack);
+            index = 0;
+          }
+          if (array.length === 1) {
+            answer = array[0];
+            break;
+          }
+          if (array.stack === 1) {
+            answer = stack[0];
+            break;
+          }
+        }
+        return answer;
+      }
+      // 2. 선생님 문제 풀이
+      // 큐 자료구조로 풀기
+      function solution2(n, k) {
+        let answer;
+        // Array.from으로 n길이의 유사 배열 객체가 생김
+        // v는 value값, i는 인덱스 번호 (for each와 유사)
+        //shift는 배열의 맨앞을 뺴주는 것
+        let queue = Array.from({ length: n }, (v, i) => {
+          return i + 1;
+        });
+        console.log(queue);
+        while (queue.length) {
+          for (let i = 1; i < k; i++) {
+            // k-1 만큼 앞은 뺴주고 뒤에 넣어준 것 (인덱스는 사용하지 않음)
+            queue.push(queue.shift());
+          }
+          // k번째는 앞에서 빼주기
+          queue.shift();
+          if (queue.length === 1) {
+            answer = queue.shift();
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution2(8, 3));
+    </script>
+  </body>
+</html>
