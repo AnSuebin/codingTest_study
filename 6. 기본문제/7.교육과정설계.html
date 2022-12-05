@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 1. 나의 문제풀이
+      // 요즘 왜이리 못하는지 모르겠음... ㅜㅠ
+      function solution1(need, plan) {
+        let needArray = need.split("");
+        let answer = "YES";
+
+        for (const x of plan) {
+          if (needArray.indexOf(x) === 0) {
+            needArray.shift();
+          } else if (needArray.indexOf(x) !== -1) {
+            answer === "N0";
+            break;
+          }
+        }
+        if (needArray.length !== 0) {
+          answer === "NO";
+        }
+        return answer;
+      }
+      // 2. 선생님 문제풀이
+      function solution1(need, plan) {
+        let answer = "YES";
+        let queue = need.split("");
+        for (const x of plan) {
+          if (queue.includes(x)) {
+            if (x !== queue.shift()) {
+              return "NO";
+            }
+          }
+        }
+        if (queue.length > 0) {
+          return "NO";
+        }
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution1(a, b));
+    </script>
+  </body>
+</html>
