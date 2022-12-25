@@ -15,10 +15,11 @@
           if (x === "(" || x === /[A-Z]/) {
             stack.push(x);
           } else {
-            while (s[s.length - 1] !== "(") {
-              stack.pop(s[s.length - 1]);
-            }
-            stack.pop(s[s.length - 1]);
+            while (stack.pop() !== "(");
+            // {
+            //   stack.pop(s[s.length - 1]);
+            // }
+            // stack.pop(s[s.length - 1]) ;
           }
         }
         console.log(stack);
