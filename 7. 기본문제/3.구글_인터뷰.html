@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution1(arr) {
+        let minus = arr.filter((number) => {
+          return number < 0;
+        });
+        let plus = arr.filter((number) => {
+          return number > 0;
+        });
+        let answer = [...minus, ...plus];
+
+        return answer;
+      }
+      //2. 선생님 문제 풀이
+      function solution2(arr) {
+        let answer = arr;
+        for (let i = 0; i < array.length - 1; i++) {
+          for (let j = 0; j < array.length - i - 1; j++) {
+            if (arr[j] > 0 && arr[j + 1] < 0) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+          }
+        }
+      }
+
+      let arr = [1, 2, 3, -3, -2, 5, 6, -6];
+      console.log(solution1(arr));
+    </script>
+  </body>
+</html>
